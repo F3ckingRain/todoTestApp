@@ -1,0 +1,14 @@
+@import '../../styles/mixins';
+
+.collapse {
+}
+
+@include mobile-width {
+  .collapse {
+  }
+}
+
+@include desktop-width {
+  .collapse {
+  }
+}

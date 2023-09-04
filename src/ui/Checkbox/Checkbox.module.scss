@@ -1,0 +1,14 @@
+@import '../../styles/mixins';
+
+.checkbox {
+}
+
+@include mobile-width {
+  .checkbox {
+  }
+}
+
+@include desktop-width {
+  .checkbox {
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../styles/mixins';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+@include mobile-width {
+  .wrapper {
+    padding: 0 20px;
+
+    width: 100%;
+  }
+}
+
+@include desktop-width {
+  .wrapper {
+    padding: 0 150px;
+
+    > div {
+      max-width: 1440px;
+    }
+  }
+}

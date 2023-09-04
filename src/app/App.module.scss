@@ -1,0 +1,7 @@
+@import '../styles/mixins';
+
+@include mobile-width {
+  .main {
+    padding-top: 60px;
+  }
+}

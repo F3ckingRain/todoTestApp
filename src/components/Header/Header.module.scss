@@ -1,0 +1,44 @@
+@import '../../styles/mixins';
+
+.header {
+  padding: 12px;
+
+  width: 100%;
+  height: 60px;
+  max-width: 1440px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  &__logo {
+    width: 100%;
+    max-width: 120px;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background-color: transparent;
+  }
+}
+
+@include mobile-width {
+  .header {
+    position: fixed;
+    top: 0;
+
+    background-color: #ececec;
+  }
+}
+
+@include desktop-width {
+  .header {
+    background-color: #f4f4f4;
+
+    &__logo {
+      cursor: pointer;
+    }
+  }
+}
