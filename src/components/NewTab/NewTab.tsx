@@ -43,7 +43,13 @@ const NewTab: FC<NewTabProps> = ({ applyHandler, closeHandler }) => {
       <div className={styles.content}>
         <div>Введите название новой задачи:</div>
 
-        <input className={styles.input} onBlur={onBlur} onChange={changeHandler} />
+        <input
+          className={styles.input}
+          onBlur={onBlur}
+          onChange={changeHandler}
+          type={'text'}
+          data-testid={'newTab-Input'}
+        />
 
         {status === false && (
           <div className={styles.error}>Вы должны ввести название задачи!</div>
@@ -51,7 +57,11 @@ const NewTab: FC<NewTabProps> = ({ applyHandler, closeHandler }) => {
       </div>
 
       <div className={styles.btns}>
-        <button onClick={apply} className={clsx(styles.btn, styles.applyBtn)} />
+        <button
+          onClick={apply}
+          className={clsx(styles.btn, styles.applyBtn)}
+          data-testid={'applyNewAction'}
+        />
 
         <button onClick={closeHandler} className={clsx(styles.btn, styles.removeBtn)} />
       </div>

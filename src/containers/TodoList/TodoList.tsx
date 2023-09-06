@@ -9,7 +9,7 @@ interface TodoListProps {
 }
 const TodoList: FC<TodoListProps> = ({ list, todoId }) => {
   return (
-    <div className={styles.todoList}>
+    <div className={styles.todoList} data-testid={'TodoList'}>
       {list.map((el, index) => (
         <TodoItem {...el} id={index} todoId={todoId} key={`${el.text}_${index}`} />
       ))}

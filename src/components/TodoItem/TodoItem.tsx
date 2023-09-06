@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { TodoType } from '../../types/todoTypes.ts';
-import TodoModel from '../../models/TodoModel.ts';
+import TodoModel from '../../models/TodoModel/TodoModel.ts';
 
 import styles from './TodoItem.module.scss';
 import Checkbox from '../../ui/Checkbox/Checkbox.tsx';

@@ -6,7 +6,7 @@ import TodoCard from '../../components/TodoCard/TodoCard.tsx';
 
 import useTranslatedTodos from '../../hooks/useTranslatedTodos.ts';
 import AddButton from '../../ui/AddButton/AddButton.tsx';
-import TodoModel from '../../models/TodoModel.ts';
+import TodoModel from '../../models/TodoModel/TodoModel.ts';
 import NewTodo from '../../components/NewTodo/NewTodo.tsx';
 const TodosContainer = () => {
   const [showNewTodo, setShowNewTodo] = useState<boolean>(false);
@@ -38,7 +38,11 @@ const TodosContainer = () => {
       <div className={styles.todosContainer__header}>
         <div>todos</div>
 
-        <AddButton onClick={openNewTodo} additionalClassName={styles.addBtn} />
+        <AddButton
+          onClick={openNewTodo}
+          additionalClassName={styles.addBtn}
+          dataTestId={'addNewTodoBtn'}
+        />
       </div>
 
       {showNewTodo ? (

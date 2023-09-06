@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 import { ITodo } from '../../store/atoms/Todo/data.ts';
-import TodoModel from '../../models/TodoModel.ts';
+import TodoModel from '../../models/TodoModel/TodoModel.ts';
 import Collapse from '../../ui/Collapse/Collapse.tsx';
 import TodoList from '../../containers/TodoList/TodoList.tsx';
 import Filters from '../Filters/Filters.tsx';
@@ -46,8 +46,14 @@ const TodoCard: FC<ITodo> = ({ active, list, id, title }) => {
       className={
         active ? clsx(styles.todoCard, styles.todoCard__active) : styles.todoCard
       }
+      data-testid={`OpenCard`}
     >
-      <Collapse active={active} toggleActive={toggleActiveHandler} title={title}>
+      <Collapse
+        active={active}
+        toggleActive={toggleActiveHandler}
+        title={title}
+        dataTestId={`OpenCard-btn`}
+      >
         <div className={styles.content}>
           <div
             className={
@@ -68,6 +74,7 @@ const TodoCard: FC<ITodo> = ({ active, list, id, title }) => {
       <AddButton
         onClick={showNewTabHandler}
         additionalClassName={active ? clsx(styles.add, styles.add__active) : styles.add}
+        dataTestId={'OpenNewTab'}
       />
     </div>
   );

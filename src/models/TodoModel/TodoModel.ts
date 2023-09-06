@@ -1,6 +1,6 @@
-import useTodoState from '../store/atoms/Todo/todoState.ts';
-import { TodoType } from '../types/todoTypes.ts';
-import {ITodo} from "../store/atoms/Todo/data.ts";
+import useTodoState from '../../store/atoms/Todo/todoState.ts';
+import { TodoType } from '../../types/todoTypes.ts';
+import { ITodo } from '../../store/atoms/Todo/data.ts';
 
 type TodoActionType = {
   changeStatus: ({ todoId, listItemId }: { todoId: number; listItemId: number }) => void;
@@ -54,7 +54,7 @@ const TodoModel = () => {
     setState(newState);
   };
 
-  const addTodo: TodoActionType['addTodo'] = (todo) => {
+  const addTodo: TodoActionType['addTodo'] = todo => {
     setState([todo, ...state]);
   };
 

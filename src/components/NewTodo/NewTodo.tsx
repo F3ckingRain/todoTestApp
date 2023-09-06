@@ -1,12 +1,12 @@
 import React, { ChangeEvent, FC, useCallback, useState } from 'react';
 
 import styles from './NewTodo.module.scss';
-import TodoModel from '../../models/TodoModel.ts';
+import TodoModel from '../../models/TodoModel/TodoModel.ts';
 import { ITodo } from '../../store/atoms/Todo/data.ts';
 import { clsx } from 'clsx';
-import NewTab from "../NewTab/NewTab.tsx";
-import TodoList from "../../containers/TodoList/TodoList.tsx";
-import AddButton from "../../ui/AddButton/AddButton.tsx";
+import NewTab from '../NewTab/NewTab.tsx';
+import TodoList from '../../containers/TodoList/TodoList.tsx';
+import AddButton from '../../ui/AddButton/AddButton.tsx';
 
 interface NewTodoProps {
   lastId: number;
@@ -30,8 +30,8 @@ const NewTodo: FC<NewTodoProps> = ({ closeHandler, lastId }) => {
 
     setStatus(status);
 
-    return {status}
-  },[todo]);
+    return { status };
+  }, [todo]);
 
   const titleChangeHandler = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,29 +44,28 @@ const NewTodo: FC<NewTodoProps> = ({ closeHandler, lastId }) => {
 
   const listChangeHandler = useCallback(
     (text: string) => {
-      setTodo({ ...todo, list:[ {status: 'inProcess', text}, ...todo.list ]});
+      setTodo({ ...todo, list: [{ status: 'inProcess', text }, ...todo.list] });
     },
     [todo],
   );
 
   const closeNewTab = useCallback(() => {
     setShowNewTab(false);
-  },[]);
+  }, []);
 
   const openNewTab = useCallback(() => {
     setShowNewTab(true);
-  },[]);
+  }, []);
 
   const addTodoHandler = useCallback(() => {
-    const {status} = checkStatus();
+    const { status } = checkStatus();
 
     if (!status) return;
 
     addTodo(todo);
 
-    return closeHandler()
-
-  },[todo, checkStatus, addTodo, closeHandler])
+    return closeHandler();
+  }, [todo, checkStatus, addTodo, closeHandler]);
 
   return (
     <div className={styles.newTodoContainer}>
@@ -76,12 +75,11 @@ const NewTodo: FC<NewTodoProps> = ({ closeHandler, lastId }) => {
         <div className={styles.title}>
           <div className={styles.title__text}>Название заметки:</div>
 
-          <input
-            className={styles.input}
-            onChange={titleChangeHandler}
-          />
+          <input className={styles.input} onChange={titleChangeHandler} />
 
-          {status === false && <div className={styles.errorText}>Вы должны ввести название заметки!</div>}
+          {status === false && (
+            <div className={styles.errorText}>Вы должны ввести название заметки!</div>
+          )}
         </div>
 
         <div className={styles.actions}>
@@ -91,7 +89,9 @@ const NewTodo: FC<NewTodoProps> = ({ closeHandler, lastId }) => {
             <AddButton onClick={openNewTab} />
           </div>
 
-          {showNewTab &&  <NewTab closeHandler={closeNewTab} applyHandler={listChangeHandler} />}
+          {showNewTab && (
+            <NewTab closeHandler={closeNewTab} applyHandler={listChangeHandler} />
+          )}
 
           <div className={styles.actions__list}>
             <TodoList list={todo.list} todoId={todo.id} />

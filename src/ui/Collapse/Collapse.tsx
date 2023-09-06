@@ -8,8 +8,15 @@ interface CollapseProps {
   children: React.ReactNode;
   active: boolean;
   toggleActive: () => void;
+  dataTestId?: string;
 }
-const Collapse: FC<CollapseProps> = ({ title, children, toggleActive, active }) => {
+const Collapse: FC<CollapseProps> = ({
+  title,
+  children,
+  toggleActive,
+  active,
+  dataTestId,
+}) => {
   return (
     <div className={styles.collapse}>
       <button
@@ -19,6 +26,7 @@ const Collapse: FC<CollapseProps> = ({ title, children, toggleActive, active }) 
             : styles.collapse__btn
         }
         onClick={toggleActive}
+        data-testid={dataTestId}
       >
         {title}
       </button>

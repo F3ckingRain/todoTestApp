@@ -23,6 +23,6 @@
     "allowSyntheticDefaultImports": true,
     "importHelpers": true
   },
-  "include": ["src", "declaration.d.ts"],
+  "include": ["src", "tests", "declaration.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

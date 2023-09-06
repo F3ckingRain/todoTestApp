@@ -1,11 +1,11 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import FilterModel from '../../models/FilterModel.ts';
+import FilterModel from '../../models/FIlterModel/FilterModel.ts';
 import useFilterState from '../../store/atoms/Filter/filterState.ts';
 import { clsx } from 'clsx';
 import styles from './Filters.module.scss';
 import sortTypeArr from './data.ts';
 import { FilterType } from '../../store/atoms/Filter/data.ts';
-import TodoModel from '../../models/TodoModel.ts';
+import TodoModel from '../../models/TodoModel/TodoModel.ts';
 
 interface FilterProps {
   count: number;
