@@ -67,6 +67,7 @@
   flex-direction: column;
 
   overflow-y: auto;
+  overflow-x: hidden;
 
   &__title {
     display: flex;

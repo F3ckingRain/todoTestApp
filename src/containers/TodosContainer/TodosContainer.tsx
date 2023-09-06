@@ -16,7 +16,7 @@ const TodosContainer = () => {
   const { clearTodos } = TodoModel();
 
   const someActive = todos.some(el => el.active);
-  const lastId = todos?.length - 1 || 0;
+  const lastId = todos.length;
   const showClearBtn = !someActive && !showNewTodo;
 
   const clearTodosHandler = useCallback(() => {
