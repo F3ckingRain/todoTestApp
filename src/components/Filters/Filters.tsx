@@ -1,19 +1,24 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect, useRef } from 'react';
 import FilterModel from '../../models/FilterModel.ts';
 import useFilterState from '../../store/atoms/Filter/filterState.ts';
 import { clsx } from 'clsx';
 import styles from './Filters.module.scss';
 import sortTypeArr from './data.ts';
 import { FilterType } from '../../store/atoms/Filter/data.ts';
+import TodoModel from '../../models/TodoModel.ts';
 
 interface FilterProps {
   count: number;
+  todoId: number;
 }
 
-const Filters: FC<FilterProps> = ({ count }) => {
+const Filters: FC<FilterProps> = ({ count, todoId }) => {
+  const textRef = useRef<HTMLDivElement>(null);
+
   const [{ type }] = useFilterState();
 
   const { setFilterType } = FilterModel();
+  const { clearCompleted } = TodoModel();
 
   const sortTypeHandler = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,11 +29,36 @@ const Filters: FC<FilterProps> = ({ count }) => {
     [setFilterType],
   );
 
-  return (
-    <div>
-      <div>{`${count} items left`}</div>
+  const clearCompletedHandler = useCallback(() => {
+    clearCompleted({ todoId });
+  }, [clearCompleted, todoId]);
 
-      <div>
+  useEffect(() => {
+    if (!textRef) return;
+    if (!textRef.current) return;
+
+    const handler = setTimeout(() => {
+      if (!textRef) return;
+      if (!textRef.current) return;
+
+      textRef.current.className = styles.animated;
+      textRef.current.innerHTML = `${count}`;
+    }, 300);
+
+    textRef.current.className = '';
+
+    return () => clearTimeout(handler);
+  }, [textRef, count]);
+
+  return (
+    <div className={styles.filtersBlock}>
+      <div className={styles.count}>
+        <div ref={textRef}></div>
+
+        <div>items left</div>
+      </div>
+
+      <div className={styles.sortBlock}>
         {sortTypeArr.map((el, index) => (
           <button
             onClick={sortTypeHandler}
@@ -40,7 +70,12 @@ const Filters: FC<FilterProps> = ({ count }) => {
         ))}
       </div>
 
-      <button>Clear completed</button>
+      <button
+        className={clsx(styles.btnSort, styles.clear)}
+        onClick={clearCompletedHandler}
+      >
+        Clear completed
+      </button>
     </div>
   );
 };

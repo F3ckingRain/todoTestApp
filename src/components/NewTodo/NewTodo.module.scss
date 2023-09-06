@@ -1,0 +1,178 @@
+@import "../../styles/mixins";
+
+.newTodoContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__header {
+    width: 100%;
+
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 135%;
+    color: #4b4b4b;
+  }
+}
+
+.content {
+  padding: 16px;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  background-color: #ffffff;
+}
+
+.title {
+  width: 100%;
+
+  display: flex;
+
+  &__text {
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 500;
+    color: #444343;
+  }
+}
+
+.input {
+  border: none;
+  outline: none;
+  border-bottom: 1px dashed #6e6d6d;
+
+  background-color: transparent;
+}
+
+.errorText {
+  color: #7c1b1b;
+}
+
+.actions {
+  width: 100%;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.buttons {
+  display: flex;
+}
+
+.btn {
+  margin: 0;
+  padding: 20px;
+
+  outline: none;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 125%;
+
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+.closeBtn {
+  border-color: #7c1b1b;
+
+  color: #7c1b1b;
+
+  background-color: #f4f4f4;
+}
+
+.addBtn {
+  border-color: #45d245;
+
+  color: #45d245;
+
+  background-color: white;
+}
+
+@include mobile-width {
+  .actions {
+    gap: 12px;
+  }
+
+  .content {
+    gap: 16px;
+
+    border-radius: 16px;
+  }
+
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .buttons {
+    margin-top: auto;
+
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@include desktop-width {
+  .actions {
+    gap: 24px;
+  }
+
+  .content {
+    gap: 24px;
+
+    border-radius: 20px;
+  }
+
+  .input {
+    padding: 8px;
+  }
+
+  .title {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .buttons {
+    margin: auto auto 0;
+
+    max-width: 50%;
+    width: 100%;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .input {
+    cursor: pointer;
+  }
+
+  .btn {
+    cursor: pointer;
+  }
+}

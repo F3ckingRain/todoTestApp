@@ -3,25 +3,92 @@
 .todoCard {
   width: 100%;
   height: 100%;
-  max-height: 480px;
+  max-height: 470px;
 
   box-sizing: border-box;
 
-  &__active {
-    min-height: 480px;
+  background-color: #ffffff;
 
-    z-index: 3;
+  border: 1px solid #cecece;
+  border-radius: 16px;
+
+  &__active {
+    position: absolute;
+
+    min-height: 470px;
+
+    z-index: 10;
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 10;
+
+  transition: all 0.5s ease-in-out;
+
+  &__active {
+    opacity: 1;
+
+    pointer-events: all;
+  }
+}
+
+.newTab {
+  width: 100%;
+  max-height: 0;
+
+  box-sizing: border-box;
+
+  transform: translateX(-200%) scaleX(0);
+  transform-origin: left;
+  transition: all 0.5s ease-in-out;
+
+  &__active {
+    padding: 20px;
+
+    position: static;
+
+    max-width: none;
+    min-height: 65px;
+    max-height: unset;
+    height: 100%;
+
+    border-bottom: 1px solid rgba(182, 180, 182, 0.93);
+
+    transform: translateX(0) scaleX(1);
   }
 }
 
 @include mobile-width {
   .todoCard {
-
   }
 }
 
 @include desktop-width {
   .todoCard {
+  }
 
+  .newTab {
+    &__active {
+      max-height: 65px;
+    }
   }
 }

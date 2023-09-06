@@ -1,7 +1,13 @@
 @import '../styles/mixins';
 
+@include desktop-width {
+  .main {
+    padding: 0 0 60px;
+  }
+}
+
 @include mobile-width {
   .main {
-    padding-top: 60px;
+    padding: 60px 0 20px;
   }
 }

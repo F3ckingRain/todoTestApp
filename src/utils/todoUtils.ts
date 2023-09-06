@@ -1,18 +1,29 @@
-import { TodoType } from '../types/todoTypes.ts';
+import { TodoStatusType, TodoType } from '../types/todoTypes.ts';
 import { FilterType } from '../store/atoms/Filter/data.ts';
 
 export const getCount = (list: TodoType[]): { count: number } => {
-  let count: number = 0;
+  let count: number = list.length;
 
   if (!list) return { count };
 
   list.forEach(el => {
     if (el.status !== 'done') return;
 
-    count += 1;
+    count -= 1;
   });
 
   return { count };
+};
+
+export const getStatus = (status: TodoStatusType): boolean => {
+  switch (status) {
+    case 'done':
+      return true;
+    case 'inProcess':
+      return false;
+    default:
+      return false;
+  }
 };
 
 export const getFilteredTodos = (

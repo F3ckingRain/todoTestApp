@@ -1,0 +1,53 @@
+@import "../../styles/mixins";
+
+.addButtonContainer {
+  min-width: 32px;
+  max-width: 32px;
+  min-height: 32px;
+  max-height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    rotate: 360deg;
+  }
+}
+
+.add {
+  position: relative;
+
+  min-width: 32px;
+  max-width: 32px;
+  min-height: 32px;
+  max-height: 32px;
+
+  border: 1px solid rgba(173, 171, 171, 0.35);
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &:after,
+  &:before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    translate: -50% -50%;
+
+    width: 18px;
+    height: 2px;
+
+    background-color: #6e6d6d;
+  }
+
+  &:after {
+    rotate: 90deg;
+  }
+}

@@ -1,0 +1,85 @@
+@import '../../styles/mixins';
+
+.todoItem {
+  padding: 20px;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid rgba(182, 180, 182, 0.93);
+}
+
+.text {
+  position: relative;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #313131;
+
+  transition: all 0.5s ease-in-out;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+
+    transform: translateY(10px);
+    animation: returned 0.5s ease-in-out;
+
+    background-color: #706f6f;
+
+    z-index: 2;
+  }
+
+  &__done {
+    color: #888585;
+
+    &:after {
+      width: 100%;
+
+      animation: done 0.5s ease-in-out;
+    }
+  }
+}
+
+@include mobile-width {
+  .todoItem {
+    gap: 12px;
+  }
+}
+
+@include desktop-width {
+  .todoItem {
+    gap: 18px;
+  }
+}
+
+@keyframes done {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes returned {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}

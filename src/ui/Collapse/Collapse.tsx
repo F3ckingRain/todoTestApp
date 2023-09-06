@@ -12,7 +12,16 @@ interface CollapseProps {
 const Collapse: FC<CollapseProps> = ({ title, children, toggleActive, active }) => {
   return (
     <div className={styles.collapse}>
-      <button onClick={toggleActive}>{title}</button>
+      <button
+        className={
+          active
+            ? clsx(styles.collapse__btn, styles.collapse__btnActive)
+            : styles.collapse__btn
+        }
+        onClick={toggleActive}
+      >
+        {title}
+      </button>
 
       <div
         className={
